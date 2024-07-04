@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=uisrael
+      - POSTGRES_PASSWORD=uisrael
+      - POSTGRES_DB=uisrael
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "uisrael@uisrael.com"
+      PGADMIN_DEFAULT_PASSWORD: "uisrael"
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
